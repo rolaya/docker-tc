@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   tc:
-    image: "${DOCKER_IMAGE_TERMINAL:-lukaszlach/docker-tc}"
+    image: "${DOCKER_IMAGE_TERMINAL:-rolaya/docker-tc}"
     container_name: docker-tc
     cap_add:
       - NET_ADMIN

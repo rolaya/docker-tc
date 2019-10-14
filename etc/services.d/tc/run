@@ -8,6 +8,6 @@ cat <<'banner'
 
 banner
 echo "Starting Docker Traffic Control $DOCKER_TC_VERSION"
-echo "https://github.com/lukaszlach/docker-tc"
+echo "https://github.com/rolaya/docker-tc"
 echo
-exec bash /docker-tc/bin/docker-tc.sh
+#exec bash /docker-tc/bin/docker-tc.sh

@@ -4,7 +4,7 @@ RUN git clone https://github.com/jsoendermann/hapttic.git && \
     cd hapttic/ && \
     go build -o hapttic .
 
-FROM debian:stretch-slim AS docker-tc
+FROM debian:stretch AS docker-tc
 
 COPY --from=hapttic /go/hapttic/hapttic /usr/bin/hapttic
 RUN hapttic -version && \
@@ -47,7 +47,7 @@ LABEL maintainer="Łukasz Lach <llach@llach.pl>" \
       org.opencontainers.image.title="docker-tc" \
       org.opencontainers.image.description="Docker Traffic Control" \
       org.opencontainers.image.authors="Łukasz Lach <llach@llach.pl>" \
-      org.opencontainers.image.documentation="https://github.com/lukaszlach/docker-tc" \
+      org.opencontainers.image.documentation="https://github.com/rolaya/docker-tc" \
       org.opencontainers.image.version=${VERSION} \
       org.opencontainers.image.revision=${VCS_REF} \
       org.opencontainers.image.created=${BUILD_DATE} \

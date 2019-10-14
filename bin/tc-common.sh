@@ -16,6 +16,7 @@ qdisc_next() {
 # http://man7.org/linux/man-pages/man8/tc-netem.8.html
 qdisc_netm() {
     IF="$1"
+    echo "updating interface: [$IF]"
     shift
     tc qdisc add dev "$IF" $QDISC_HANDLE netem $@
     qdisc_next

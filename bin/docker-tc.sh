@@ -6,6 +6,8 @@ set -e
 log() {
     echo "[$(date -Is)] [$CONTAINER_ID] $*"
 }
+
+log "starting up...."
 while read DOCKER_EVENT; do
     # docker events
     CONTAINER_ID=$(echo "$DOCKER_EVENT" | cut -d' ' -f4)

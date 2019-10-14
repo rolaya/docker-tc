@@ -1,10 +1,10 @@
 # Docker Traffic Control
 
 ![Version](https://img.shields.io/badge/version-18.12-lightgrey.svg?style=flat)
-[![Docker pulls](https://img.shields.io/docker/pulls/lukaszlach/docker-tc.svg?label=docker+pulls)](https://hub.docker.com/r/lukaszlach/docker-tc)
-[![Docker stars](https://img.shields.io/docker/stars/lukaszlach/docker-tc.svg?label=docker+stars)](https://hub.docker.com/r/lukaszlach/docker-tc)
+[![Docker pulls](https://img.shields.io/docker/pulls/rolaya/docker-tc.svg?label=docker+pulls)](https://hub.docker.com/r/rolaya/docker-tc)
+[![Docker stars](https://img.shields.io/docker/stars/rolaya/docker-tc.svg?label=docker+stars)](https://hub.docker.com/r/rolaya/docker-tc)
 
-**Docker Traffic Control** allows to set a rate limit on the container network and can emulate network conditions like delay, packet loss, duplication, and corrupt for the Docker containers, all that basing only on labels. [HTTP API](#http-api) allows to [fetch](#get) and [pause](#delete) existing rules and to [manually overwrite](#post) them, [command-line interface](#command-line) is also available. **Project is written entirely in Bash** and is distributed as a [Docker image](https://hub.docker.com/r/lukaszlach/docker-tc/).
+**Docker Traffic Control** allows to set a rate limit on the container network and can emulate network conditions like delay, packet loss, duplication, and corrupt for the Docker containers, all that basing only on labels. [HTTP API](#http-api) allows to [fetch](#get) and [pause](#delete) existing rules and to [manually overwrite](#post) them, [command-line interface](#command-line) is also available. **Project is written entirely in Bash** and is distributed as a [Docker image](https://hub.docker.com/r/rolaya/docker-tc/).
 
 ## Running
 
@@ -18,7 +18,7 @@ docker run -d \
     --restart always \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v /var/docker-tc:/var/docker-tc \
-    lukaszlach/docker-tc
+    rolaya/docker-tc
 ```
 
 > You can also pass `HTTP_BIND` and `HTTP_PORT` environment variables, which default to `127.0.0.1:4080`.
@@ -26,7 +26,7 @@ docker run -d \
 This repository contains `docker-compose.yml` file in root directory, you can use it instead of manually running `docker run` command. Newest version of image will be pulled automatically and the container will run in daemon mode.
 
 ```bash
-git clone https://github.com/lukaszlach/docker-tc.git
+git clone https://github.com/rolaya/docker-tc.git
 cd docker-tc
 docker-compose up -d
 ```
@@ -196,7 +196,7 @@ docker-tc set my-container-name 'delay=300ms&rate=1000kbps'
 ## Build
 
 ```bash
-git clone https://github.com/lukaszlach/docker-tc.git
+git clone https://github.com/rolaya/docker-tc.git
 cd docker-tc
 make
 docker images | grep docker-tc
@@ -224,7 +224,7 @@ docker service create \
     --cap-add NET_ADMIN \
     --mount "type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock" \
     --mount "type=bind,src=/var/docker-tc,dst=/var/docker-tc" \
-    lukaszlach/docker-tc
+    rolaya/docker-tc
 ```
 
 > `/var/docker-tc` directory has to exist on Docker Swarm nodes before deploying the service
